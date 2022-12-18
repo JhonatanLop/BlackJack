@@ -58,13 +58,13 @@ while play == "s":
     if bot_estourou and estourou == False:
         print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}")
         print(f"Parabéns! você ganhou {aposta}\n")
-        fichas += premio
+        fichas += mesa
     elif estourou and bot_estourou == False:
         print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}")
         print("")
         print(f"Você estourou e perdeu {aposta}... jogue novamente para se recuperar.")
     elif hand_value > bot_hand_value and estourou == False:
-        fichas += premio
+        fichas += mesa
         print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}")
         print(f"Parabéns! você ganhou {aposta}\n")
     elif bot_hand_value > hand_value and bot_estourou == False:
