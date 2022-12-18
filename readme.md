@@ -11,12 +11,10 @@ Ao invéz do modo tradicional, nessa versão o jogador compra as cartas dele pri
 
 Seus status como cartas e soma, são exibidas durante o jogo. No final, sua mão é comparada com a do adversário e um resultado é anunciado junto com a distribuição de fichas.
 
-Por enquanto não possível jogar contra mais de um oponente...
-
 ## Como jogar? ♟️
-Ao iniciar, é perguntado se você deseja jogar... Essa parte do código não é essencial para o funcionamento do game, mas acabei deixando mesmo assim.<br>
+Ao iniciar, é perguntado se você deseja jogar<br>
 Caso a resposta seja *sim*, o jogo começa.<br>
-Caso a resposta seja *não*, uma mensagem gentil é exibida.<br>
+Caso a resposta seja *não*, é exibida uma mensagem e o jogo se fecha.<br>
 > As respostas em sí são dados como "*s*" ou "*n*"
 
 * ### Aposta  💰
@@ -53,10 +51,10 @@ python game.py
 
 ## Futuras melhorias 🚀
 
-* Atualmente o código do arquivo principal do jogo "***game.py***", possui 163 linhas, incluindo comentários.
-Planejo reduzir a repetição de elementos dentro do código usando funções.<br>
-> O arquivo *utilidades.py* tinha sido criado inicialmente para essa funcionalidade que vai acabar saindo para uma versão 2.0 do game.
+* Atualmente o código do arquivo principal do jogo "***game.py***", possui um número muito grande de linhas, coisa que pretendo mudar numa segunda versão reduzindo o tamanho do código e implementando extrtuturas mais complexas que a atual.<br>
+> O arquivo *utilidades.py* tinha sido criado inicialmente para abrigar funções a serem utilizadas dentro do arquivo principal *game.py*.
 * Planejo adicionar a possibilidade de jogar contra mais de um oponente e poder ver a primeira carta de todos os jogadores (*assim como no jogo tradicional*)
+* Também pretendo adicionar a possibilidades de fazer apostas durante o jogo, caso esteja confiante e ache que sua aposta inicial foi baixa.
 
 
 
