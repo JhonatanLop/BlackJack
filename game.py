@@ -1,107 +1,42 @@
-from utilidades import baralho
 from random import choice
 import sys
 
-# declara valor inicial das fichas
-fichas = 1000.00
+nome = input("\nOlá, bem vindo ou meu projeto de BlackJack\nQual é o seu nome?\n")
 
-## player ##
-user_hand = []
-hand_value = 0
-## bot ##
-bot_hand = []
-bot_hand_value = 0
+user_hand, hand_value, fichas, bot_hand, bot_hand_value, mesa, play = [], 0, 1000, [], 0, 0, "s"
 
-print("")
-print("Olá, bem vindo ou meu projeto de BlackJack")
-nome = input("Qual é o seu nome?\n")
-
-jogo = "s"
-
-while jogo == "s":
+while play == "s":
+    from utilidades import restart, status, bet, buy, initialize_hand, cards
     
-    ################# parte da aposta ###################
-    # define quanto será a aposta
-    print("")
-    print("Você tem {:.2f} reais em fichas.".format(fichas))
+    # zera todas as variáveis
+    restart(user_hand, hand_value, bot_hand, bot_hand_value, mesa)
     
-    if fichas > 0:
-        print("")
-        aposta = float(input("quanto será a posta dessa rodada?  "))
-        if aposta <= fichas:
-            fichas -= aposta
-            premio = 2*aposta
-        else:
-            raise Exception("forçando except")
-        # verifica se a variável é nula
-    else:
-        print("parece que suas fichas acabaram...")
-        print("saia e entre novamente para poder reiniciar a quantidade de fichas")
-        sys.exit()
-    ################# parte do jogo ###################
-    # zera a mão do jogador
-    user_hand = []
-    hand_value = 0
-    bot_hand = []
-    bot_hand_value = 0
-    estourou = False
-    bot_estourou = False
+    # mostra status do jogo
+    status(fichas,None,None)
     
-    print("")
-    print(f"o senhor apostou {aposta:.2f}\nCaso ganhe, o prêmio será de +{aposta}")
-    print("")
-    print(f"aposta: {aposta:.2f}\npremio: {premio}\nfichas: {fichas:.2f}")
+    # define apostas e atualiza valor das variáveis
+    fichas, mesa, aposta = bet(fichas, 0)
 
-    for i in range(2):
-        # transforma o dicionário em uma tupla com 2 valores, para 
-        # variável = escolha(transforma em lista(pega key e valor do dicionário))
-        # retorna 2 valores, a key e o valor
-        random_card = choice(list(baralho.items()))
-        
-        # atribui respectivamente a key da carta e o valor aos valores corretos
-        carta, valor = random_card
+    # inicializa a mão do jogador com duas cartas
+    user_hand, hand_value = initialize_hand()
 
-        # adiciona carta
-        user_hand.append(carta)
-        hand_value += valor
-        
-        random_card = choice(list(baralho.items()))
-        carta, valor = random_card
-        bot_hand.append(carta)
-        bot_hand_value += valor
-
-
-    print("") # enter
-    print(f"cartas: {user_hand}")
-    print(f"soma: {hand_value}")
+    cards(user_hand, hand_value)
 
     print("")
     cont = input("gostaria de comprar mais uma carta?\n")
     while cont == "s":
-        random_card = choice(list(baralho.items()))
-        carta, valor = random_card
-
-        user_hand.append(carta)
-        hand_value += valor
-        
-        print(f"cartas: {user_hand}")
-        print(f"soma: {hand_value}")
+        buy(user_hand,hand_value)
+        cards(user_hand,hand_value)
         
         # verifica se ele já não estourou
         if hand_value > 21:
-            print("")
-            print("Sua mão estourou!")
+            print("\nSua mão estourou!\nvocê perdeu: {aposta}\n")
             estourou = True
-            print(f"você perdeu: {aposta}")
             break
         elif hand_value == 21:
-            print("")
-            print("21!")
-            print(f"você ganhou: {aposta}")
+            print(f"\n21!\nvocê ganhou: {mesa}\n")
             break
-
-        print("")
-        cont = input("gostaria de comprar mais uma carta? s/n\n")
+        cont = input("\ngostaria de comprar mais uma carta? s/n\n")
         
 # agora falta add a possibilidade de jogar contra um bot
 # o bot será simples
@@ -123,13 +58,13 @@ while jogo == "s":
     if bot_estourou and estourou == False:
         print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}")
         print(f"Parabéns! você ganhou {aposta}\n")
-        fichas += premio
+        fichas += mesa
     elif estourou and bot_estourou == False:
         print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}")
         print("")
         print(f"Você estourou e perdeu {aposta}... jogue novamente para se recuperar.")
     elif hand_value > bot_hand_value and estourou == False:
-        fichas += premio
+        fichas += mesa
         print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}")
         print(f"Parabéns! você ganhou {aposta}\n")
     elif bot_hand_value > hand_value and bot_estourou == False:
