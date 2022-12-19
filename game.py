@@ -1,5 +1,5 @@
 
-nome = input("\nOlá, bem vindo ou meu projeto de BlackJack\nQual é o seu nome?\n")
+ok = input("\nOlá, bem vindo ou meu projeto de BlackJack.  (press enter)\n")
 
 user_hand, hand_value, fichas, bot_hand, bot_hand_value, mesa, play, estourou, bot_estourou, win = [], 0, 1000, [], 0, 0, "s", False, False, "None"
 while play == "s":
