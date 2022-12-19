@@ -108,82 +108,85 @@ baralho2 ={
 #         self.user_hand = []
 #         self.hand_value = 0
 
-def restart(player_hand, player_hand_value, bot_hand, bot_hand_value, table):
-    user_hand = []
-    hand_value = 0
-    bot_hand = []
-    bot_hand_value = 0
-    mesa = 0
-    return user_hand, hand_value, bot_hand, bot_hand_value, mesa
+def restart(player_hand, player_hand_value, estourou):
+    player_hand = []
+    player_hand_value = 0
+    estourou = False
+    return player_hand, player_hand_value, estourou
 
 def bet(fichas, mesa):
     if fichas > 0:
-        aposta = float(input("quanto deseja apostar?\n"))
+        aposta = float(input("\nQuanto deseja apostar?\n"))
         if aposta <= fichas:
             fichas -= aposta
             mesa = 2*aposta
             print("")
-            print(f"\nO senhor apostou {aposta:.2f}\nCaso ganhe, o prêmio será de +{aposta}\n \nAposta: {aposta:.2f}\nPremio: {mesa}\nFichas: {fichas:.2f}")
+            print(f"\nO senhor apostou {aposta:.2f}\nCaso ganhe, o prêmio será de +{aposta}\n \nAposta: {aposta:.2f}\nValor da mesa: {mesa}\nFichas: {fichas:.2f}\n")
         else:
-            print("Suas fichas são insuficientes para essa aposta.")    
+            print("\nSuas fichas são insuficientes para essa aposta.\n")    
             return
     else:
-        print("Suas fichas acabaram.\nReinicie o jogo para recomeçar")
+        print("\nSuas fichas acabaram.\nReinicie o jogo para recomeçar")
         sys.exit()
     return fichas, mesa, aposta
 
 def status(fichas, aposta, mesa):
     try:
         if not fichas == None:
-           print(f"Você tem {fichas} reais em fichas.")
+           print(f"\nVocê tem {fichas} reais em fichas.")
         if not aposta == None:
            print(f"Asua aposta é de: {aposta}")
         if not mesa == None:
-            print(f"valor da mesa: {mesa}")
+            print(f"Valor da mesa: {mesa}\n")
     except:
-        print("erro em: utilidades.py, // função (status)")
+        print("Erro em: utilidades.py, // função (status)")
     return " "
     
-def cards(user_hand, hand_value):
-    return f"\ncartas: {user_hand}\nsoma: {hand_value}\n"
-
 def buy(user_hand, hand_value):
     # pega carta aleatória do baralho
     random_card = choice(list(baralho.items()))
-    carta, value = random_card
+    card, value = random_card
     
     # add carta e soma à mão do player
-    user_hand.append(carta)
+    user_hand.append(card)
     hand_value += value
     return user_hand, hand_value
 
 def initialize_hand(user_hand, hand_value):
     for i in range (2):
-        buy(user_hand,hand_value)
+        user_hand, hand_value = buy(user_hand,hand_value)
+    return user_hand, hand_value
 
 def bot(bot_hand, bot_hand_value):
+    global bot_estourou
+    bot_estourou = False
     while bot_hand_value < 16:
-        buy(bot_hand,bot_hand_value)
+        bot_hand,bot_hand_value = buy(bot_hand,bot_hand_value)
         if bot_hand_value > 21:
             bot_estourou = True
             break
     return bot_hand, bot_hand_value, bot_estourou
 
-def validate(user_hand, hand_value, estourou, bot_hand, bot_hand_value, bot_estourou, aposta):
+def validate(user_hand, hand_value, estourou, aposta, bot_hand, bot_hand_value, bot_estourou, win):
+    mesa = 2 * aposta
     if bot_estourou and estourou == False:
-        print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}\nParabéns! você ganhou {aposta}\n")
+        print(f"Sua mão: {user_hand}, Soma: {hand_value}\nMão do bot: {bot_hand}, Soma: {bot_hand_value}\nParabéns! Você ganhou {mesa}\n")
         win = "true"
     elif estourou and bot_estourou == False:
-        print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}\nVocê estourou e perdeu {aposta}... jogue novamente para se recuperar.\n")
+        print(f"Sua mão: {user_hand}, Soma: {hand_value}\nMão do bot: {bot_hand}, Soma: {bot_hand_value}\nVocê estourou e perdeu {aposta}\nJogue novamente para se recuperar.\n")
     elif hand_value > bot_hand_value and estourou == False:
-        print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}\nParabéns! você ganhou {aposta}\n")
+        print(f"Sua mão: {user_hand}, Soma: {hand_value}\nMão do bot: {bot_hand}, Soma: {bot_hand_value}\nParabéns! você ganhou {mesa}\n")
         win = "true"
     elif bot_hand_value > hand_value and bot_estourou == False:
-        print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}\nVocê perdeu {aposta}...jogue novamente para se recuperar.")
+        print(f"Sua mão: {user_hand}, Soma: {hand_value}\nMão do bot: {bot_hand}, Soma: {bot_hand_value}\nVocê perdeu {aposta}\n ogue novamente para se recuperar.\n")
     elif bot_estourou == True and estourou == True:
-        print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}\nEmpate!, jogue novamente")
+        print(f"Sua mão: {user_hand}, Soma: {hand_value}\nMão do bot: {bot_hand}, Soma: {bot_hand_value}\nEmpate! Ambos estouraram, jogue novamente\n")
         win = "not_exactly"
     else:
-        print(f"sua mão: {user_hand}, soma: {hand_value}\nmão do bot: {bot_hand}, soma: {bot_hand_value}\nEmpate!, jogue novamente")
+        print(f"Sua mão: {user_hand}, Soma: {hand_value}\nMão do bot: {bot_hand}, Soma: {bot_hand_value}\nEmpate!, jogue novamente\n")
         win = "not_exactly"
     return win
+
+def hand(user_hand, hand_value):
+    print(f"\nCartas: {user_hand}\nSoma: {hand_value}\n")
+    return " "
