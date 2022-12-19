@@ -68,14 +68,15 @@ def restart(player_hand, player_hand_value, estourou, win):
     return player_hand, player_hand_value, estourou, win
 
 # Definir valor da aposta, mesa e fichas restantes
-def bet(fichas, mesa):
+def bet(fichas, mesa, aposta):
     if fichas > 0:
-        aposta = float(input("\nQuanto deseja apostar?\n"))
-        if aposta <= fichas:
-            fichas -= aposta
-            mesa = 2*aposta
+        joker = float(input("\nQuanto deseja apostar?\n"))
+        if joker <= fichas:
+            aposta += joker
+            fichas -= joker
+            mesa += 2*joker
             print("")
-            print(f"\nO senhor apostou {aposta:.2f}\nCaso ganhe, o prêmio será de +{aposta}\n \nAposta: {aposta:.2f}\nValor da mesa: {mesa}\nFichas: {fichas:.2f}\n")
+            print(f"\nO senhor apostou {aposta:.2f}\nCaso ganhe, o prêmio será de +{mesa}\n \nAposta: {aposta:.2f}\nValor da mesa: {mesa}\nFichas: {fichas:.2f}\n")
         else:
             print("\nSuas fichas são insuficientes para essa aposta.\n")    
             return
