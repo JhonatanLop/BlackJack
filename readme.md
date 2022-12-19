@@ -12,30 +12,23 @@ Ao invéz do modo tradicional, nessa versão o jogador compra as cartas dele pri
 Seus status como cartas e soma, são exibidas durante o jogo. No final, sua mão é comparada com a do adversário e um resultado é anunciado junto com a distribuição de fichas.
 
 ## Como jogar? ♟️
-Ao iniciar, é perguntado se você deseja jogar<br>
-Caso a resposta seja *sim*, o jogo começa.<br>
-Caso a resposta seja *não*, é exibida uma mensagem e o jogo se fecha.<br>
-> As respostas em sí são dados como "*s*" ou "*n*"
+Ao iniciar, é exibido uma mensagem de boas vindas, basta apertar qualquer tecla<br>
 
 * ### Aposta  💰
 
 > O algoritmo pede para você fornecer um valor a ser apostado, que seja menor ou igual ao número de fichas que você possui. <br>Automaticamente, a quantidade de fichas que você apostou é retirada do seu "cofre". <br>
-> * ⚠️  Vale lembrar que só é permitido fazer **UMA** aposta dentro do game, que é a inicial. ⚠️</p>
+
+>* ⚠️ Vale lembrar que só é permitido fazer **UMA** aposta dentro do game, que é a inicial. ⚠️
 
 * ### Compra de Cartas  ♠️
 
-> Caso você ainda não esteja confiante com a sua mão, é possível comprar mais cartas. <br>Dentro do game existe uma ***trigger*** que é ativada quando sua mão "estoura". Não sendo possível comprar mais cartas ou fazer apostas
-> Quando a soma de suas cartas é == 21, a compra de cartas não estará mais disponível<br>
+> Caso você ainda não esteja confiante com a sua mão, é possível comprar mais cartas. Dentro do game existe uma ***trigger*** que é ativada quando sua mão "estoura" ou é igual a 21, Não sendo possível comprar mais cartas.
 > Ao finalizar sua compra de cartas, é a vez do oponente (*que também possui a mesma **trigger***)<br>
+> É possível ver a primeira carta do durante o jogo, isso é útil para eliminar a possibilidade de você pegar aquela carta específicamente.
 
 * ### Ganhar ou perder?  👊
 
-> O jogo possui 4 tipos de validações:
-> * sua mão é maior que a do adversário **E** sua mão não "estourou"
-> * sua mão e menor que a do adversário **E** a mão dele não "estourou"
-> * sua mão é igual que a do adversário
-> * as duas mãos estouraram<br>
-> 
+> O jogo possui alguns tipos de validações de resultado para determinar quem venceu a partida.
 > Caso você ganhe, recebe o dobro do valor que apostou, exemplo:<br>
 > Supondo que você tenha apostado 500, esse valor será retirado da sua quantidade total de fichas. Se ganhar, essas fichas voltam para você com mais 500. O dobro que apostou.
 
@@ -49,11 +42,12 @@ Caso a resposta seja *não*, é exibida uma mensagem e o jogo se fecha.<br>
 python game.py 
 ~~~
 
-## Futuras melhorias 🚀
+## Melhorias em andamento 🚀
 
-* Atualmente o código do arquivo principal do jogo "***game.py***", possui um número muito grande de linhas, coisa que pretendo mudar numa segunda versão reduzindo o tamanho do código e implementando extrtuturas mais complexas que a atual.<br>
-> O arquivo *utilidades.py* tinha sido criado inicialmente para abrigar funções a serem utilizadas dentro do arquivo principal *game.py*.
-* Planejo adicionar a possibilidade de jogar contra mais de um oponente e poder ver a primeira carta de todos os jogadores (*assim como no jogo tradicional*)
+* ~~Atualmente o código do arquivo principal do jogo "***game.py***", possui um número muito grande de linhas, coisa que pretendo mudar numa segunda versão reduzindo o tamanho do código e implementando extrtuturas mais complexas que a atual.~~<br>
+> Essa modificação já foi feita e está presente, diminuindo o código em cerca de 30%
+* Planejo adicionar a possibilidade de jogar contra mais de um oponente e poder ver a ~~primeira carta de todos os jogadores (*assim como no jogo tradicional*)~~
+> Já é possível ver a 1º carta do adversário, mas ainda só é possível jogar contra apenas um oponente... (*por enquanto*)
 * Também pretendo adicionar a possibilidades de fazer apostas durante o jogo, caso esteja confiante e ache que sua aposta inicial foi baixa.
 
 
