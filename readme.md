@@ -1,6 +1,8 @@
 # BlackJack Game ♣️
 
-> Status: Versão 1.0 terminado ✔
+> Status: Versão 1.0 terminado ✔<br>
+> *versão 2.0 em desenvolvimento do branch "Game-2.0"*
+
 
   O objetivo desse projeto é aprender mais sobre python. Por ser algo que tem capacidade de explorar muito das funções, acho interessenta começar com um jogo simples de blackjack, e ir aprimorando essa idéia.
 
@@ -53,7 +55,7 @@ python game.py
 
 * Atualmente o código do arquivo principal do jogo "***game.py***", possui um número muito grande de linhas, coisa que pretendo mudar numa segunda versão reduzindo o tamanho do código e implementando extrtuturas mais complexas que a atual.<br>
 > O arquivo *utilidades.py* tinha sido criado inicialmente para abrigar funções a serem utilizadas dentro do arquivo principal *game.py*.
-* Planejo adicionar a possibilidade de jogar contra mais de um oponente e poder ver a primeira carta de todos os jogadores (*assim como no jogo tradicional*)
+* Planejo adicionar a possibilidade de poder ver a primeira carta de todos os jogadores (*assim como no jogo tradicional*)
 * Também pretendo adicionar a possibilidades de fazer apostas durante o jogo, caso esteja confiante e ache que sua aposta inicial foi baixa.
 
 
