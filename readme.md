@@ -45,7 +45,7 @@ python game.py
 ## Melhorias em andamento 🚀
 
 * ~~Atualmente o código do arquivo principal do jogo "***game.py***", possui um número muito grande de linhas, coisa que pretendo mudar numa segunda versão reduzindo o tamanho do código e implementando extrtuturas mais complexas que a atual.~~<br>
-> Essa modificação já foi feita e está presente, diminuindo o código em cerca de 30%
+> Essa modificação já foi feita e está presente, diminuindo o código em menos da metadeda quantidade de linhas anteriores
 * ~~Planejo adicionar a possibilidade de ver a primeira carta de todos os jogadores (*assim como no jogo tradicional*)~~
 > Já é possível ver a 1º carta do adversário
 * Também pretendo adicionar a possibilidades de fazer apostas durante o jogo, caso esteja confiante e ache que sua aposta inicial foi baixa.
