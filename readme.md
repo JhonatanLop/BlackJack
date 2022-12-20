@@ -16,21 +16,21 @@ Ao iniciar, é exibido uma mensagem de boas vindas, basta apertar qualquer tecla
 
 * ### Aposta  💰
 
-> O algoritmo pede para você fornecer um valor a ser apostado, que seja menor ou igual ao número de fichas que você possui. <br>Automaticamente, a quantidade de fichas que você apostou é retirada do seu "cofre". <br>
-
->* ⚠️ Vale lembrar que só é permitido fazer **UMA** aposta dentro do game, que é a inicial. ⚠️
+> * O algoritmo pede para você fornecer um valor a ser apostado, que seja menor ou igual ao número de fichas que você possui. <br>
+> Automaticamente, a quantidade de fichas que você apostou é retirada do seu "cofre". <br>
+> * Também é possível fazer apostas durante o game.
 
 * ### Compra de Cartas  ♠️
 
-> Caso você ainda não esteja confiante com a sua mão, é possível comprar mais cartas. Dentro do game existe uma ***trigger*** que é ativada quando sua mão "estoura" ou é igual a 21, Não sendo possível comprar mais cartas.
-> Ao finalizar sua compra de cartas, é a vez do oponente (*que também possui a mesma **trigger***)<br>
-> É possível ver a primeira carta do durante o jogo, isso é útil para eliminar a possibilidade de você pegar aquela carta específicamente.
+> * Caso você ainda não esteja confiante com a sua mão, é possível comprar mais cartas. Dentro do game existe uma ***trigger*** que é ativada quando sua mão "estoura" ou é igual a 21, Não sendo possível comprar mais cartas.
+> * Ao finalizar sua compra de cartas, é a vez do oponente (*que também possui a mesma **trigger***)<br>
+> * É possível ver a primeira carta do oponente durante o jogo.
 
 * ### Ganhar ou perder?  👊
 
-> O jogo possui alguns tipos de validações de resultado para determinar quem venceu a partida.
-> Caso você ganhe, recebe o dobro do valor que apostou, exemplo:<br>
-> Supondo que você tenha apostado 500, esse valor será retirado da sua quantidade total de fichas. Se ganhar, essas fichas voltam para você com mais 500. O dobro que apostou.
+> * O jogo possui alguns tipos de validações de resultado para determinar quem venceu a partida.
+> * Caso você ganhe, recebe o dobro do valor que apostou, exemplo:<br>
+> * Supondo que você tenha apostado 500, esse valor será retirado da sua quantidade total de fichas. Se ganhar, essas fichas voltam para você com mais 500. O dobro que apostou.
 
 * ### Como rodar o jogo? 🕹️
 
@@ -42,14 +42,11 @@ Ao iniciar, é exibido uma mensagem de boas vindas, basta apertar qualquer tecla
 python game.py 
 ~~~
 
-## Melhorias em andamento 🚀
+## Melhorias Feitas 🚀
 
-* ~~Atualmente o código do arquivo principal do jogo "***game.py***", possui um número muito grande de linhas, coisa que pretendo mudar numa segunda versão reduzindo o tamanho do código e implementando extrtuturas mais complexas que a atual.~~<br>
-> Essa modificação já foi feita e está presente, diminuindo o código em menos da metadeda quantidade de linhas anteriores
-* ~~Planejo adicionar a possibilidade de ver a primeira carta de todos os jogadores (*assim como no jogo tradicional*)~~
-> Já é possível ver a 1º carta do adversário
-* Também pretendo adicionar a possibilidades de fazer apostas durante o jogo, caso esteja confiante e ache que sua aposta inicial foi baixa.
-
+* Foi diminuido o tamanho do código em mais da metada em comparação da versão anterior
+* É possível ver a 1º carta do adversário
+* Agora é possível fazer apostas com o jogo em andamento
 
 
 ## Agradecimentos ✌️
