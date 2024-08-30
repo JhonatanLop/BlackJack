@@ -1,68 +1,84 @@
 import secrets
+import user
 
 baralho = {
-    "A-P" : 1,
-    "A-O" : 1,
-    "A-C" : 1,
-    "A-E" : 1,
-    "2-P" : 2,
-    "2-O" : 2,
-    "2-C" : 2,
-    "2-E" : 2,
-    "3-P" : 3,
-    "3-O" : 3,
-    "3-C" : 3,
-    "3-E" : 3,
-    "4-P" : 4,
-    "4-O" : 4,
-    "4-C" : 4,
-    "4-E" : 4,
-    "5-P" : 5,
-    "5-O" : 5,
-    "5-C" : 5,
-    "5-E" : 5,
-    "6-P" : 6,
-    "6-O" : 6,
-    "6-C" : 6,
-    "6-E" : 6,
-    "7-P" : 7,
-    "7-O" : 7,
-    "7-C" : 7,
-    "7-E" : 7,
-    "8-P" : 8,
-    "8-O" : 8,
-    "8-C" : 8,
-    "8-E" : 8,
-    "9-P" : 9,
-    "9-O" : 9,
-    "9-C" : 9,
-    "9-E" : 9,
-    "Q-P" : 10,
-    "Q-O" : 10,
-    "Q-C" : 10,
-    "Q-E" : 10,
-    "J-P" : 10,
-    "J-O" : 10,
-    "J-C" : 10,
-    "J-E" : 10,
-    "K-P" : 10,
-    "K-O" : 10,
-    "K-C" : 10,
-    "K-E" : 10,
+    "A♣️" : 1,
+    "A♦️" : 1,
+    "A♥️" : 1,
+    "A♠️" : 1,
+    "2♣️" : 2,
+    "2♦️" : 2,
+    "2♥️" : 2,
+    "2♠️" : 2,
+    "3♣️" : 3,
+    "3♦️" : 3,
+    "3♥️" : 3,
+    "3♠️" : 3,
+    "4♣️" : 4,
+    "4♦️" : 4,
+    "4♥️" : 4,
+    "4♠️" : 4,
+    "5♣️" : 5,
+    "5♦️" : 5,
+    "5♥️" : 5,
+    "5♠️" : 5,
+    "6♣️" : 6,
+    "6♦️" : 6,
+    "6♥️" : 6,
+    "6♠️" : 6,
+    "7♣️" : 7,
+    "7♦️" : 7,
+    "7♥️" : 7,
+    "7♠️" : 7,
+    "8♣️" : 8,
+    "8♦️" : 8,
+    "8♥️" : 8,
+    "8♠️" : 8,
+    "9♣️" : 9,
+    "9♦️" : 9,
+    "9♥️" : 9,
+    "9♠️" : 9,
+    "Q♣️" : 10,
+    "Q♦️" : 10,
+    "Q♥️" : 10,
+    "Q♠️" : 10,
+    "J♣️" : 10,
+    "J♦️" : 10,
+    "J♥️" : 10,
+    "J♠️" : 10,
+    "K♣️" : 10,
+    "K♦️" : 10,
+    "K♥️" : 10,
+    "K♠️" : 10,
 }
     
 def take_card():
     return secrets.choice(list(baralho.items()))
 
-def apostar (aposta, fichas):
-    if aposta < 0:
-        print("o valor tem que ser maior ou igual a 0")
-        return 0, fichas
-    if fichas > 0:
-        if aposta <= fichas and aposta > 0:
-            fichas -= aposta
+def apostar (player):
+    bet_value = float(input("\nquanto será a aposta dessa rodada?  "))
+    if bet_value < 0:
+        return "o valor tem que ser maior ou igual a 0"
+    if player.chips > 0:
+        if bet_value <= player.chips and bet_value > 0:
+            player.bet = bet_value
+            player.pay_bet(bet_value)
         else:
-            print("não há fichas suficientes!")
+            return "não há fichas suficientes!"
     else:
-        print("parece que suas fichas acabaram...")
-    return aposta, fichas
+        return "parece que suas fichas acabaram..."
+
+def user_hand_validator(player):
+    if player.type == "Player":
+        if player.hand_value > 21:
+            print("\nSua mão estourou!")
+            player.pass_ = True
+            print(f"você perdeu: {player.bet}")
+        elif player.hand_value == 21:
+            print("\n21!")
+            print(f"você ganhou: {player.bet}")
+    else:
+        if player.hand_value > 21:
+            player.pass_ = True
+        elif player.hand_value == 21:
+            return
