@@ -1,7 +1,6 @@
 # BlackJack Game ♣️
 
-> Status: Versão 1.0 terminado ✔<br>
-> *versão 2.0 em desenvolvimento do branch "Game-2.0"*
+Replicando jogo de cartas "21" usando python OOP
 
 
   O objetivo desse projeto é aprender mais sobre python. Por ser algo que tem capacidade de explorar muito das funções, acho interessenta começar com um jogo simples de blackjack, e ir aprimorando essa idéia.
